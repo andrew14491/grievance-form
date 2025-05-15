@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Password Protected Grievance Form</title>
+  
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      padding: 0;
+      font-family: candara;
+      background: linear-gradient(to top, #ffffff 0%, #FFDF00 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+	  font-family: candara;
+    }
+
+    #password-box, .mainform {
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      max-width: 500px;
+      width: 90%;
+      margin: 20px auto;
+    }
+
+    .mainform {
+      display: none;
+    }
+
+    .header {
+      font-size: 17px;
+    }
+
+    input[type=text], select, textarea, input[type=password] {
+      width: 100%;
+      padding: 12px;
+      margin-top: 6px;
+      margin-bottom: 16px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-family: candara;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #ffd700;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    button:hover {
+      background-color: #e6c200;
+    }
+
+    @media screen and (max-width: 680px) {
+      #password-box, .mainform {
+        padding: 1rem;
+        font-size: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Password Prompt -->
+  <div id="password-box">
+    <h2>Password</h2>
+	<p>Please enter the password to access the form</p>
+    <input type="password" id="password-input" placeholder="Enter password">
+    <br><br>
+    <button onclick="checkPassword()">Unlock Form</button>
+  </div>
+
+  <!-- Protected Form -->
+  <div class="mainform" id="grievance-form">
+    <form action="https://formsubmit.co/andrew.romero14491@gmail.com" method="POST">
+
+      <div class="header">
+        <h1><b>Grievance Submission</b></h1>
+        <p>Please tell me anything that bothers you so I can fix it immediately! :D</p>
+        <hr />
+      </div>
+
+      <label for="title"><b>Title:</b></label>
+      <input type="text" id="title" name="title" placeholder="Briefly describe the grievance" required>
+
+      <label for="summary"><b>Summary:</b></label>
+      <textarea id="summary" name="summary" placeholder="What's wrong? :c 
+Please tell me" style="height:200px" required></textarea>
+
+      <label for="mood"><b>Mood:</b></label>
+      <select id="mood" name="mood" required>
+        <option value="">----</option>
+        <option value="🥰">🥰</option>
+        <option value="😐">😐</option>
+        <option value="🤢">🤢</option>
+        <option value="😔">😔</option>
+        <option value="😭">😭</option>
+        <option value="😡">😡</option>
+      </select>
+
+      <label for="resolution"><b>Resolution Method:</b></label>
+      <select id="resolution" name="resolution" required>
+        <option value="">----</option>
+        <option value="1">It's okie I just wanted you to know</option>
+        <option value="2">I demand compensation hmph (Flowers or Snacks or anything I ask)</option>
+        <option value="3">We genuinely need to have a serious discussion about this</option>
+      </select>
+
+      <!-- Redirect after submit -->
+      <input type="hidden" name="_next" value="https://yourdomain.github.io/thank-you.html">
+
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+  <script>
+    function checkPassword() {
+      const correctPassword = "iloveyou143";
+      const inputPassword = document.getElementById("password-input").value;
+
+      if (inputPassword === correctPassword) {
+        document.getElementById("password-box").style.display = "none";
+        document.getElementById("grievance-form").style.display = "block";
+      } else {
+        alert("Incorrect password. Try again.");
+      }
+    }
+  </script>
+
+</body>
+</html>
